@@ -19,6 +19,7 @@ public class Controlls extends MyUIElements {
 	JButton buttonBr;
 	JButton buttonA;
 	
+	String test;//dfsdf
 	
 		
 	
