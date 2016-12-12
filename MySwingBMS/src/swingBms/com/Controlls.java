@@ -18,6 +18,8 @@ public class Controlls extends MyUIElements {
 	JButton buttonLr;
 	JButton buttonBr;
 	JButton buttonA;
+	
+	
 		
 	
 	Controlls(JFrame frame) {
@@ -36,6 +38,7 @@ public class Controlls extends MyUIElements {
 		
 		//dopisac actione listenery!!!
 		//dziala
+		//kkk
 		
 		// TODO Auto-generated constructor stub
 	}
