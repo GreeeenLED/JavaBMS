@@ -20,7 +20,7 @@ public class Controlls extends MyUIElements {
 	JButton buttonA;
 	
 	
-	
+	String test;//dfsdf
 		
 	
 	Controlls(JFrame frame) {
