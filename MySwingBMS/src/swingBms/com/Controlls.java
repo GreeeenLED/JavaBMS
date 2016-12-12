@@ -34,6 +34,9 @@ public class Controlls extends MyUIElements {
 		buttonBr = new JButton("Bed room");
 		buttonA = new JButton("Atrium");
 		
+		//dopisac actione listenery!!!
+		//dziala
+		
 		// TODO Auto-generated constructor stub
 	}
 	public void showMPanel(){		
