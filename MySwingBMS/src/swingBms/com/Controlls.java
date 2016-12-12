@@ -1,4 +1,4 @@
-package swingbms.com;
+package swingBms.com;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;

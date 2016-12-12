@@ -1,4 +1,4 @@
-package swingbms.com;
+package swingBms.com;
 
 import javax.swing.JFrame;
 
