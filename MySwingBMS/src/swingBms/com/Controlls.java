@@ -74,13 +74,15 @@ public class Controlls extends MyUIElements implements ActionListener {
 		switch(event){
 		case "L":
 			System.out.println("living room");
-			images.switchImage();
+			images.switchImage("liv");
 			break;
 		case "B":
 			System.out.println("bed room");
+			images.switchImage("mie");
 			break;
 		case "A":
 			System.out.println("atrium");
+			images.switchImage("atr");
 			break;
 			}
 		// TODO Auto-generated method stub

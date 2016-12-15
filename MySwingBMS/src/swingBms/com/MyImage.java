@@ -26,28 +26,33 @@ public class MyImage extends MyUIElements{
 		frame.getContentPane().add(imageContainer, BorderLayout.CENTER);
 		
 		try {
-			myImage = ImageIO.read(getClass().getResource("/images/mieszkanie.png"));
+			//myImage = ImageIO.read(getClass().getResource("/images/mieszkanie.png"));
 			iconM = new ImageIcon(ImageIO.read(getClass().getResource("/images/mieszkanie.png")));
+			iconL = new ImageIcon(ImageIO.read(getClass().getResource("/images/pokoj.png")));
+			iconA = new ImageIcon(ImageIO.read(getClass().getResource("/images/przedsionek.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("no path or image");
 		}
-		imageLabel =new JLabel (" label");
-		imageLabel = new JLabel(new ImageIcon(myImage));
-		imageContainer.add(imageLabel);		
-		
-		try {
-			myImage = ImageIO.read(getClass().getResource("/images/pokoj.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//icon = new ImageIcon(myImage);
-		
+		//imageLabel =new JLabel (" label");
+		imageLabel = new JLabel(iconM);
+		imageContainer.add(imageLabel);			
+		//icon = new ImageIcon(myImage);		
 	}
 	
-	public void switchImage(){
+	public void switchImage(String img){
+		switch (img){
+		case "mie":
+			imageLabel.setIcon(iconM);
+			break;
+		case "liv":
+			imageLabel.setIcon(iconL);
+			break;
+		case "atr":
+			imageLabel.setIcon(iconA);
+			break;
+		}
 		//imageLabel.setIcon(icon);
 	}
 		
