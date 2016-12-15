@@ -20,8 +20,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 	JButton buttonLr;
 	JButton buttonBr;
 	JButton buttonA;
-		
-	
+
 	Controlls(JFrame frame) {
 		super(frame);
 		
@@ -44,12 +43,8 @@ public class Controlls extends MyUIElements implements ActionListener {
 		buttonA.addActionListener(this);
 		buttonA.setActionCommand("A");
 		
-		//dopisac actione listenery!!!
-		//dziala
-		//kkk
-		
 		// TODO Auto-generated constructor stub
-	}
+	}	
 	public void showMPanel(){		
 		frame.getContentPane().add(panelM, BorderLayout.WEST);
 	
@@ -71,12 +66,15 @@ public class Controlls extends MyUIElements implements ActionListener {
 		gbc.weighty = 1;
 		panelM.add(controlPanelElements,gbc);
 	}
+	
+	MyImage images = new MyImage(frame);
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String event = e.getActionCommand();
 		switch(event){
 		case "L":
 			System.out.println("living room");
+			images.switchImage();
 			break;
 		case "B":
 			System.out.println("bed room");
