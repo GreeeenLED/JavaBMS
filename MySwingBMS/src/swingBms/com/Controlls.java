@@ -1,9 +1,11 @@
 package swingBms.com;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,10 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Controlls extends MyUIElements implements ActionListener {
+	JPanel ctrlContainer;
 	JPanel panelM;
 	JLabel lblControls;
-	JPanel controlPanelElements;
-	JPanel controlButtons;
 	JButton buttonLr;
 	JButton buttonBr;
 	JButton buttonA;
@@ -24,12 +25,11 @@ public class Controlls extends MyUIElements implements ActionListener {
 	Controlls(JFrame frame) {
 		super(frame);
 		
-		//myUielements = new MyUIElements();
+		ctrlContainer = new JPanel(new CardLayout(0, 0));//container for all controls
 		
-		panelM = new JPanel(new GridBagLayout());//panel with apartment buttons
+		panelM = new JPanel();
+		
 		lblControls = new JLabel("CONTROLS");
-		controlPanelElements = new JPanel(new GridLayout(2,1));
-		controlButtons = new JPanel(new GridLayout(3,1));
 		
 		buttonLr = new JButton("Living room");
 		buttonLr.addActionListener(this);
@@ -44,27 +44,39 @@ public class Controlls extends MyUIElements implements ActionListener {
 		buttonA.setActionCommand("A");
 		
 		// TODO Auto-generated constructor stub
-	}	
-	public void showMPanel(){		
-		frame.getContentPane().add(panelM, BorderLayout.WEST);
-	
-		showSettingsLabel();
-		showPanelButtons();
 	}
-	private void showSettingsLabel(){
+	public void viewMieszkanie(){
+		GridBagLayout gblM = new GridBagLayout();
+		gblM.columnWidths = new int[]{0, 0};
+		gblM.rowHeights = new int[]{0, 0, 0, 0};
+		gblM.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gblM.rowWeights = new double[]{0.0, 0.0, 0.0,0.0,0.0, 0.0};
+		panelM.setLayout(gblM);
+				
 		JLabel lblControls = new JLabel("CONTROLS");
-		controlPanelElements.add(lblControls);
-	}
-	private void showPanelButtons(){
-		controlPanelElements.add(controlButtons);
-		controlButtons.add(buttonLr);
-		controlButtons.add(buttonBr);
-		controlButtons.add(buttonA);
+		GridBagConstraints gbcB = new GridBagConstraints();		
+		gbcB.insets = new Insets(0,0,20,0);
+		gbcB.fill = GridBagConstraints.HORIZONTAL;
+	
+		gbcB.gridy = 0;
+		panelM.add(lblControls, gbcB);
 		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.NORTH;
-		gbc.weighty = 1;
-		panelM.add(controlPanelElements,gbc);
+		gbcB.gridy = 1;
+		panelM.add(buttonBr, gbcB);
+		
+		gbcB.gridy = 2;
+		panelM.add(buttonLr, gbcB);
+		
+		gbcB.gridy = 3;
+		panelM.add(buttonA, gbcB);		
+		
+	}
+	public void showMPanel(){		
+		frame.getContentPane().add(ctrlContainer, BorderLayout.WEST);
+		viewMieszkanie();
+		
+		ctrlContainer.add(panelM, "mieszkanie");
+			
 	}
 	
 	MyImage images = new MyImage(frame);
@@ -75,6 +87,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 		case "L":
 			System.out.println("living room");
 			images.switchImage("liv");
+			//panelM.setVisible(false);
 			break;
 		case "B":
 			System.out.println("bed room");
@@ -88,4 +101,5 @@ public class Controlls extends MyUIElements implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
