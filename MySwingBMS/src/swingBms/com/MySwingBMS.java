@@ -35,6 +35,7 @@ public class MySwingBMS {
 	public MySwingBMS() {
 		initialize();
 		showUI();
+		showStatus();
 	}
 
 	/**
@@ -49,6 +50,10 @@ public class MySwingBMS {
 	private void showUI(){
 		Controlls control = new Controlls(frame);
 		control.showMPanel();
+	}
+	private void showStatus(){
+		StatusDisp status = new StatusDisp(frame);
+		status.displayStatus();
 	}
 
 }

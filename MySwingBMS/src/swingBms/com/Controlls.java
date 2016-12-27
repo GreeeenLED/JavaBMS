@@ -80,8 +80,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 	}
 	public void showMPanel(){		
 		frame.getContentPane().add(ctrlContainer, BorderLayout.WEST);
-		viewMieszkanie();
-		
+		viewMieszkanie();		
 		ctrlContainer.add(panelM, "mieszkanie");
 			
 	}
