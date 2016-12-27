@@ -49,8 +49,8 @@ public class Controlls extends MyUIElements implements ActionListener {
 		GridBagLayout gblM = new GridBagLayout();
 		gblM.columnWidths = new int[]{0, 0};
 		gblM.rowHeights = new int[]{0, 0, 0, 0};
-		gblM.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gblM.rowWeights = new double[]{0.0, 0.0, 0.0,0.0,0.0, 0.0};
+		gblM.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gblM.rowWeights = new double[]{0.0, 0.0, 0.0,1.0,0.0, Double.MIN_VALUE};
 		panelM.setLayout(gblM);
 				
 		JLabel lblControls = new JLabel("CONTROLS");
@@ -68,7 +68,14 @@ public class Controlls extends MyUIElements implements ActionListener {
 		panelM.add(buttonLr, gbcB);
 		
 		gbcB.gridy = 3;
-		panelM.add(buttonA, gbcB);		
+		panelM.add(buttonA, gbcB);			
+		
+		//empty labels to move nuttons to top of GridbagConstrainsts
+		gbcB.weighty =1;
+		for(int i =4;i<=12;i++){
+			gbcB.gridy = i;
+			panelM.add(new JLabel(" "), gbcB);
+		}
 		
 	}
 	public void showMPanel(){		
