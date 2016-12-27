@@ -20,16 +20,16 @@ public class Controlls extends MyUIElements implements ActionListener {
 	JLabel lblControls;
 	JButton[] mieszButtons = new JButton[5];
 		
-	int buttonsCount;
+	int buttonsCount; // counter counting buttons in JPanel Mieszkanie
 
 	Controlls(JFrame frame) {
 		super(frame);
 		
 		ctrlContainer = new JPanel(new CardLayout(0, 0));//container for all controls
 		
-		panelM = new JPanel();
+		panelM = new JPanel(); //JPnael - Mieszkanie
 		
-		lblControls = new JLabel("CONTROLS");
+		lblControls = new JLabel("CONTROLS"); // label in JPanel Mieszkanie
 		
 		buttonsCount=1; //from 1 because panel MIeszkanie has label with gridy=0
 		
@@ -38,6 +38,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 	//private GridBagLayout gblM = new GridBagLayout();
 	private GridBagConstraints gbcB = new GridBagConstraints();
 	private void addButton(String name){
+		//method to add new buttons to JPanel Mieszkanie (panelM)
 		mieszButtons[buttonsCount]=new JButton(name);
 		mieszButtons[buttonsCount].addActionListener(this);
 		mieszButtons[buttonsCount].setActionCommand(String.valueOf(buttonsCount));
@@ -72,8 +73,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 	public void showMPanel(){		
 		frame.getContentPane().add(ctrlContainer, BorderLayout.WEST);
 		viewMieszkanie();		
-		ctrlContainer.add(panelM, "mieszkanie");
-			
+		ctrlContainer.add(panelM, "mieszkanie");			
 	}
 	
 	MyImage images = new MyImage(frame);
