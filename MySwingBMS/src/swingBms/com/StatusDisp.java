@@ -24,7 +24,6 @@ public class StatusDisp extends MyUIElements {
 		statContainer = new JPanel(new CardLayout(0, 0));//container for all controls
 		
 		roomPanel = new JPanel();
-				
 		setRoomLayout();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,38 +32,44 @@ public class StatusDisp extends MyUIElements {
 		setRoomLayout();
 		addRoomElements("swiatlo","default");
 		addRoomElements("swiatlo2","default");
+		addRoomElements("swiatlo3","default");
 		statContainer.add(roomPanel, "panel1");
 	}
 	
 	
-	private GridBagLayout gblR = new GridBagLayout();
+	//private GridBagLayout gblR = new GridBagLayout();
 	private GridBagConstraints gbcR = new GridBagConstraints();	
 	private void setRoomLayout(){		
-		gblR.columnWidths = new int[]{0, 0};
-		gblR.rowHeights = new int[]{0, 0, 0, 0};
-		gblR.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gblR.rowWeights = new double[]{0.0, 0.0, 0.0,1.0,0.0, Double.MIN_VALUE};
-		roomPanel.setLayout(gblR);
-		//roomPanel.setLayout(new GridBagLayout());
+		//gblR.columnWidths = new int[]{0, 0};
+		//gblR.rowHeights = new int[]{0, 0, 0, 0};
+		//gblR.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		//gblR.rowWeights = new double[]{0.0, 0.0, 0.0,1.0,0.0, Double.MIN_VALUE};
+		//roomPanel.setLayout(gblR);
+		roomPanel.setLayout(new GridBagLayout());
 			
-		gbcR.insets = new Insets(0,0,20,0);
+		gbcR.insets = new Insets(0,20,20,20);
 		gbcR.fill = GridBagConstraints.HORIZONTAL;
 		
 		roomCount=0;
 	}
 	private void addRoomElements(String name,String status){
 		roomName = new JLabel();
-		roomName.setText(name+" ");
+		roomName.setText(name);
 		gbcR.gridx = 0;
 		gbcR.gridy = roomCount;
 		roomPanel.add(roomName, gbcR);
 		
 		roomStatus = new JLabel();
-		roomStatus.setText(status+" ");
+		roomStatus.setText(status);
 		gbcR.gridx = 1;
 		gbcR.gridy = roomCount;
 		roomPanel.add(roomStatus, gbcR);		
 		roomCount++;
+		
+		for(int i =roomCount;i<=roomCount+10;i++){
+			gbcR.gridy = i;
+			roomPanel.add(new JLabel(" "), gbcR);
+		}
 	}
 
 }
