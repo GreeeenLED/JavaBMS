@@ -52,8 +52,8 @@ public class MySwingBMS {
 		control.showMPanel();
 	}
 	private void showStatus(){
-		StatusDisp status = new StatusDisp(frame);
-		status.displayStatus();
+		
+		//status.displayStatusPanel();
 	}
 
 }

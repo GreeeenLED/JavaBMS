@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +18,8 @@ public class Controlls extends MyUIElements implements ActionListener {
 	JPanel panelM;
 	JLabel lblControls;
 	JButton[] mieszButtons = new JButton[5];
+	
+	StatusDisp status = new StatusDisp(frame);
 		
 	int buttonsCount; // counter counting buttons in JPanel Mieszkanie
 
@@ -35,7 +36,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 		
 		// TODO Auto-generated constructor stub
 	}
-	//private GridBagLayout gblM = new GridBagLayout();
+	
 	private GridBagConstraints gbcB = new GridBagConstraints();
 	private void addButton(String name){
 		//method to add new buttons to JPanel Mieszkanie (panelM)
@@ -84,19 +85,24 @@ public class Controlls extends MyUIElements implements ActionListener {
 		case "1":
 			System.out.println("living room");
 			images.switchImage("liv");
+			status.switchPanel(1);
+			
 			//panelM.setVisible(false);
 			break;
 		case "2":
 			System.out.println("bed room");
 			images.switchImage("mie");
+			status.switchPanel(2);
 			break;
 		case "3":
 			System.out.println("atrium");
 			images.switchImage("atr");
+			
+			status.updateTEST();
+			
 			break;
 			}
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 	
 }
