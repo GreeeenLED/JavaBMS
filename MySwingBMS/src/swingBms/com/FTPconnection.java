@@ -16,7 +16,7 @@ public class FTPconnection {
 	String pass;
 	String fileName;
 	FTPClient ftpClient;
-	
+	//
 	FTPconnection(){
 		 //defaults
 		ftpClient = new FTPClient();
