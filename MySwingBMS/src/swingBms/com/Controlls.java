@@ -85,8 +85,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 		case "1":
 			System.out.println("living room");
 			images.switchImage("liv");
-			status.switchPanel(1);
-			
+			status.switchPanel(1);			
 			//panelM.setVisible(false);
 			break;
 		case "2":
@@ -97,7 +96,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 		case "3":
 			System.out.println("atrium");
 			images.switchImage("atr");
-			
+			status.switchPanel(3);
 			status.updateTEST();
 			
 			break;

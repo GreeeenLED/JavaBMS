@@ -13,6 +13,7 @@ public class MySwingBMS {
 	public JFrame frame;
 	public JTextField txtSterowanie;
 
+	FTPconnection myFTP;
 	/**
 	 * Launch the application.
 	 */
@@ -36,6 +37,12 @@ public class MySwingBMS {
 		initialize();
 		showUI();
 		showStatus();
+		
+		//FTP connection to server
+		myFTP = new FTPconnection();
+		myFTP.connect(myFTP.getHost(), myFTP.getPort());
+		myFTP.logIn(myFTP.getUser(), myFTP.getPass());
+		myFTP.download(myFTP.getFileName());
 	}
 
 	/**
