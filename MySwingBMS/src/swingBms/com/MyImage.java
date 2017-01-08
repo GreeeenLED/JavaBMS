@@ -11,7 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MyImage extends MyUIElements{
+public class MyImage extends JFrame{
+	JFrame frame;
 	JPanel imageContainer;
 	JLabel imageLabel;
 	BufferedImage myImage;
@@ -20,7 +21,8 @@ public class MyImage extends MyUIElements{
 	ImageIcon iconA;//dow zmiany
 	
 	MyImage(JFrame frame) {
-		super(frame);
+		this.frame = frame;
+		//super(frame);
 		imageContainer = new JPanel();
 		frame.getContentPane().add(imageContainer, BorderLayout.CENTER);
 		

@@ -18,8 +18,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class StatusDisp extends MyUIElements {
-	
+public class StatusDisp extends JFrame {
+	JFrame frame;
+
 	private JPanel statContainer;
 	//private JPanel roomPanel;
 	
@@ -45,11 +46,13 @@ public class StatusDisp extends MyUIElements {
 	//private JLabel roomStatus;
 	int roomCount;
 	
-	private ArrayList<String> updateVals;
-	FTPconnection forUpdate;
+	public ArrayList<String> updateVals;
+	//FTPconnection forUpdate;
 	
 	StatusDisp(JFrame frame) {
-		super(frame);
+		this.frame = frame;
+		
+		//super(frame);
 		statContainer = new JPanel(new CardLayout(0, 0));//container for all controls
 		frame.getContentPane().add(statContainer, BorderLayout.EAST);
 		
@@ -67,7 +70,8 @@ public class StatusDisp extends MyUIElements {
 		
 		setPanels();	
 		//timer to update label values!
-		forUpdate = new FTPconnection(1);
+		//forUpdate = new FTPconnection(1);
+		/*
 		Timer timer2= new Timer(true);
 		updateVals = new ArrayList<String>();
 		timer2.schedule(new TimerTask(){
@@ -75,10 +79,12 @@ public class StatusDisp extends MyUIElements {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				updateVals.addAll(ftp.getStatusVals());
 				update();
 			}
 			
 		},10000,5000);
+		*/
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -180,14 +186,11 @@ public class StatusDisp extends MyUIElements {
 		}
 	}
 	
-	public void update(){
-		updateVals = forUpdate.getStatusVals();
-		System.out.println("size: "+updateVals.size());
-		for(int i =0;i<3;i++){
-			//System.out.println("wazrtosci: "+updateVals.get(i));
-			//livingObject.
-			//livingval[i].setText(updateVals.get(i));
-			//livingval[i].setText("woa");
+	public void update(ArrayList<String> list){
+		for(int i =0;i<list.size();i++){			
+			if(i<3)livingval[i].setText(list.get(i));
+			if(i>=3 && i<6)bedVal[i-3].setText(list.get(i));
+			if(i>=6)atriumVal[i-6].setText(list.get(i));
 		}
 		System.out.println("test");
 	}

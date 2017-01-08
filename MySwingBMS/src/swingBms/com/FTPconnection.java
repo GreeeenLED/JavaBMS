@@ -107,7 +107,7 @@ public class FTPconnection {
 					//for(int i=0;i<counter1;i++){
 						statusVals.set(counter1, line);
 						System.out.println("line2 "+statusVals.get(counter1));
-						System.out.println("size2 "+statusVals.size());
+						//System.out.println("size2 "+statusVals.size());
 						counter1++;
 					//}
 				}
