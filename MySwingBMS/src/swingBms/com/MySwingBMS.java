@@ -16,6 +16,7 @@ public class MySwingBMS {
 	public JTextField txtSterowanie;
 
 	FTPconnection myFTP;
+	FTPconnection myFTP2;//do wywlania
 	/**
 	 * Launch the application.
 	 */
@@ -38,10 +39,12 @@ public class MySwingBMS {
 	public MySwingBMS() {
 		initialize();
 		showUI();
-		showStatus();
+		//showStatus();
+		
 		
 		//FTP connection to server
 		myFTP = new FTPconnection();
+		myFTP2 = new FTPconnection(2);//do wywalenia!!!!!!!!!!
 		myFTP.connect(myFTP.getHost(), myFTP.getPort());
 		myFTP.logIn(myFTP.getUser(), myFTP.getPass());
 		//myFTP.download(myFTP.getFileName());
@@ -52,9 +55,15 @@ public class MySwingBMS {
 			public void run() {
 				// TODO Auto-generated method stub
 				myFTP.download(myFTP.getFileName());
+				
+				System.out.println("ftp obiekt: "+myFTP.getStatusVals().size());
+				System.out.println("ftp obiekt2: "+myFTP2.getStatusVals().size());
 			}
 			
 		},1000,10000);
+		
+		
+		
 	}
 
 	/**
@@ -69,6 +78,7 @@ public class MySwingBMS {
 	private void showUI(){
 		Controlls control = new Controlls(frame);
 		control.showMPanel();
+		StatusDisp status = new StatusDisp(frame);
 	}
 	private void showStatus(){
 		

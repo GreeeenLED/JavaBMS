@@ -3,20 +3,20 @@ package swingBms.com;
 public class RoomClass {
 	
 	public String light;
-	public Boolean lightStatus;
+	public String lightStatus;
 	protected String fan;
-	protected Boolean fanStatus;
+	protected String fanStatus;
 	protected String window;
-	protected Boolean windowStatus;
+	protected String windowStatus;
 	
 	RoomClass(){
 		//defaults
 		setLight("Swiatlo");
 		setFan("Wentylator");
 		setWindow("Okno");
-		setLightStatus(false);
-		setFanStatus(false);
-		setWindowStatus(false);
+		setLightStatus("def");
+		setFanStatus("def");
+		setWindowStatus("def");
 	}
 
 	public String getLight() {
@@ -27,11 +27,11 @@ public class RoomClass {
 		this.light = light;
 	}
 
-	public Boolean getLightStatus() {
+	public String getLightStatus() {
 		return lightStatus;
 	}
 
-	public void setLightStatus(Boolean lightStatus) {
+	public void setLightStatus(String lightStatus) {
 		this.lightStatus = lightStatus;
 	}
 
@@ -43,11 +43,11 @@ public class RoomClass {
 		this.fan = fan;
 	}
 
-	public Boolean getFanStatus() {
+	public String getFanStatus() {
 		return fanStatus;
 	}
 
-	public void setFanStatus(Boolean fanStatus) {
+	public void setFanStatus(String fanStatus) {
 		this.fanStatus = fanStatus;
 	}
 
@@ -59,11 +59,11 @@ public class RoomClass {
 		this.window = window;
 	}
 
-	public Boolean getWindowStatus() {
+	public String getWindowStatus() {
 		return windowStatus;
 	}
 
-	public void setWindowStatus(Boolean windowStatus) {
+	public void setWindowStatus(String windowStatus) {
 		this.windowStatus = windowStatus;
 	}
 	

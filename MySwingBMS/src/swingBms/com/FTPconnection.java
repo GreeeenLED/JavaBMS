@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.TimerTask;
 
 import org.apache.commons.net.ftp.FTP;
@@ -13,21 +14,32 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 public class FTPconnection {
-	String host;
-	int port;
-	String user;
-	String pass;
-	String fileName;
+	
+	public ArrayList<String> statusVals = new ArrayList<String>();
+	private boolean flag1;
+	private int counter1;
+	private String host;
+	private int port;
+	private String user;
+	private String pass;
+	private String fileName;
 	FTPClient ftpClient;
 	//
 	FTPconnection(){
 		 //defaults
+		flag1 = true;
+		counter1=0;
 		ftpClient = new FTPClient();
 		setHost("127.0.0.1");
 		setPort(505);
 		setUser("user1");
 		setPass("user1");
 		setFileName("zmienne.txt");
+	}
+	FTPconnection(int n){
+		//constructor invoked by StatusDispClass
+		//empty
+		//only to give access to current array list to StatusDisp class
 	}
 	
 	protected void connect(String host,int port){
@@ -82,12 +94,29 @@ public class FTPconnection {
 			//isToString(inputStream);
 			br = new BufferedReader(new InputStreamReader(inputStream));
 			while((line=br.readLine())!=null){
-				sb.append(line);
-				//here put adding elements to array!!
-				sb.append('\n');	
+				if(flag1){
+					//sb.append(line);
+					statusVals.add(line);
+					System.out.println("line "+line);
+					//here put adding elements to array!!
+					//sb.append('\n');
+					//System.out.println("counter "+counter1);
+					//counter1++;
+				}
+				if(flag1==false){
+					//for(int i=0;i<counter1;i++){
+						statusVals.set(counter1, line);
+						System.out.println("line2 "+statusVals.get(counter1));
+						System.out.println("size2 "+statusVals.size());
+						counter1++;
+					//}
+				}
 			}
-			System.out.println("convert: "+sb.toString());
-			
+			if(br.readLine()==null){
+				flag1=false;
+				counter1=0;
+			}
+			//System.out.println("convert: \n"+sb.toString());			
 			boolean success = ftpClient.completePendingCommand();
 	            if (success) {
 	                System.out.println("File #2 has been downloaded successfully.");
@@ -99,8 +128,14 @@ public class FTPconnection {
 			e.printStackTrace();
 		}
 	}
-	private void isToString(InputStream is){
+	//private void isToString(InputStream is){
 		
+	//}
+	public ArrayList<String> getStatusVals() {
+		return statusVals;
+	}
+	public void setStatusVals(ArrayList<String> statusVals) {
+		this.statusVals = statusVals;
 	}
 
 	public String getHost() {

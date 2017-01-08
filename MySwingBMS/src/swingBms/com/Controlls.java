@@ -19,7 +19,7 @@ public class Controlls extends MyUIElements implements ActionListener {
 	JLabel lblControls;
 	JButton[] mieszButtons = new JButton[5];
 	
-	StatusDisp status = new StatusDisp(frame);
+	//StatusDisp status = new StatusDisp(frame);
 		
 	int buttonsCount; // counter counting buttons in JPanel Mieszkanie
 
@@ -85,20 +85,19 @@ public class Controlls extends MyUIElements implements ActionListener {
 		case "1":
 			System.out.println("living room");
 			images.switchImage("liv");
-			status.switchPanel(1);			
+			//status.switchPanel(1);			
 			//panelM.setVisible(false);
 			break;
 		case "2":
 			System.out.println("bed room");
 			images.switchImage("mie");
-			status.switchPanel(2);
+			//status.switchPanel(2);
 			break;
 		case "3":
 			System.out.println("atrium");
 			images.switchImage("atr");
-			status.switchPanel(3);
-			status.updateTEST();
-			
+			//status.switchPanel(3);
+			//status.updateTEST();	
 			break;
 			}
 		// TODO Auto-generated method stub		

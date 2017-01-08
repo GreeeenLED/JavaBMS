@@ -10,6 +10,9 @@ import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,7 +44,10 @@ public class StatusDisp extends MyUIElements {
 	//private JLabel roomName;
 	//private JLabel roomStatus;
 	int roomCount;
-			
+	
+	private ArrayList<String> updateVals;
+	FTPconnection forUpdate;
+	
 	StatusDisp(JFrame frame) {
 		super(frame);
 		statContainer = new JPanel(new CardLayout(0, 0));//container for all controls
@@ -59,7 +65,20 @@ public class StatusDisp extends MyUIElements {
 		atriumPanel = new JPanel();
 		countA = 0;
 		
-		setPanels();		
+		setPanels();	
+		//timer to update label values!
+		forUpdate = new FTPconnection(1);
+		Timer timer2= new Timer(true);
+		updateVals = new ArrayList<String>();
+		timer2.schedule(new TimerTask(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				update();
+			}
+			
+		},10000,5000);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -160,8 +179,17 @@ public class StatusDisp extends MyUIElements {
 			break;
 		}
 	}
-	public void updateTEST(){
-		livingObject.setLight("test111");
+	
+	public void update(){
+		updateVals = forUpdate.getStatusVals();
+		System.out.println("size: "+updateVals.size());
+		for(int i =0;i<3;i++){
+			//System.out.println("wazrtosci: "+updateVals.get(i));
+			//livingObject.
+			//livingval[i].setText(updateVals.get(i));
+			//livingval[i].setText("woa");
+		}
+		System.out.println("test");
 	}
 
 }
