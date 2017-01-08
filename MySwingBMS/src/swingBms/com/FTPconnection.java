@@ -1,8 +1,11 @@
 package swingBms.com;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.SocketException;
+import java.util.TimerTask;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -69,17 +72,22 @@ public class FTPconnection {
         }
     }
 	protected void download(String file){
+		BufferedReader br =null;
+		StringBuilder sb = new StringBuilder();
+		String line;
 		try {
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 			String readFile = file;
 			InputStream inputStream = ftpClient.retrieveFileStream(readFile);
-			//kiedys dopisac sprawdzanie rozmiaru pliku!!!
-			byte[] bytesArray = new byte[1000];
-			int bytesRead = -1;
-			while ((bytesRead = inputStream.read(bytesArray)) != -1) {
-               System.out.println(" "+bytesArray);
-               System.out.println("liczba odczytanych bajtow "+bytesRead);
-            }
+			//isToString(inputStream);
+			br = new BufferedReader(new InputStreamReader(inputStream));
+			while((line=br.readLine())!=null){
+				sb.append(line);
+				//here put adding elements to array!!
+				sb.append('\n');	
+			}
+			System.out.println("convert: "+sb.toString());
+			
 			boolean success = ftpClient.completePendingCommand();
 	            if (success) {
 	                System.out.println("File #2 has been downloaded successfully.");
@@ -90,6 +98,9 @@ public class FTPconnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	private void isToString(InputStream is){
+		
 	}
 
 	public String getHost() {
@@ -130,8 +141,6 @@ public class FTPconnection {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
-	}
-	
-	
+	}	
 
 }

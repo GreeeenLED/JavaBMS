@@ -1,6 +1,8 @@
 package swingBms.com;
 
 import java.awt.EventQueue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
@@ -42,7 +44,17 @@ public class MySwingBMS {
 		myFTP = new FTPconnection();
 		myFTP.connect(myFTP.getHost(), myFTP.getPort());
 		myFTP.logIn(myFTP.getUser(), myFTP.getPass());
-		myFTP.download(myFTP.getFileName());
+		//myFTP.download(myFTP.getFileName());
+		Timer timer = new Timer(true);
+		timer.schedule(new TimerTask(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				myFTP.download(myFTP.getFileName());
+			}
+			
+		},1000,10000);
 	}
 
 	/**
