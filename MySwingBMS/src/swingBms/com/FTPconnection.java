@@ -98,10 +98,7 @@ public class FTPconnection {
 					//sb.append(line);
 					statusVals.add(line);
 					System.out.println("line "+line);
-					//here put adding elements to array!!
-					//sb.append('\n');
-					//System.out.println("counter "+counter1);
-					//counter1++;
+			
 				}
 				if(flag1==false){
 					//for(int i=0;i<counter1;i++){

@@ -51,9 +51,7 @@ public class MySwingBMS {
 	//	}
 		initialize();
 		initUI();
-		//showStatus();
-		
-		
+		//showStatus();		
 		//FTP connection to server
 		myFTP = new FTPconnection();
 		//myFTP2 = new FTPconnection(2);//do wywalenia!!!!!!!!!!
@@ -93,12 +91,10 @@ public class MySwingBMS {
 		status = new StatusDisp(frame);
 		images = new MyImage(frame);
 		control = new Controlls(frame,images,status);
-		control.showMPanel();
-		
+		control.showMPanel();		
 	}
 	private void showStatus(){
 		
 		//status.displayStatusPanel();
 	}
-
 }

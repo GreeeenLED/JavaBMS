@@ -69,22 +69,6 @@ public class StatusDisp extends JFrame {
 		countA = 0;
 		
 		setPanels();	
-		//timer to update label values!
-		//forUpdate = new FTPconnection(1);
-		/*
-		Timer timer2= new Timer(true);
-		updateVals = new ArrayList<String>();
-		timer2.schedule(new TimerTask(){
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				updateVals.addAll(ftp.getStatusVals());
-				update();
-			}
-			
-		},10000,5000);
-		*/
 		// TODO Auto-generated constructor stub
 	}
 	
